@@ -3,7 +3,7 @@ import React from "react";
 function Details(props) {
   return (
     <section className="task-details">
-      <h1>{props.details.title}</h1>
+      <h1>{props.title}</h1>
       <button type="button">Edit Task Name</button>
       <input type="checkbox" id="=detail1" name="detail1" value="FirstDetail" />
       <label for="task1"> First Task Detail </label>

@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/Header";
-import Main from "./components/Main";
 import Details from "./components/Details";
 
 const todoList = [
@@ -25,16 +24,22 @@ const todoList = [
   },
 ];
 
-const user = {
-  name: "William",
-  avatarURL: "http://www.fillmurray.com/100/100",
-};
-
 function App() {
   return (
     <div className="body">
       <Header title="Todo.ly" />
-      <Main title="Your Tasks" />
+      <main className="todo-list">
+        <h1>Your Todo List</h1>
+        <ul>
+          {todoList.map((todo) => (
+            <li>
+              <p>{todo.title}</p>
+              <p>{todo.description}</p>
+            </li>
+          ))}
+          ;
+        </ul>
+      </main>
       <Details title="Task Details" />
     </div>
   );
