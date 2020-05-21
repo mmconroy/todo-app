@@ -3,7 +3,7 @@ import React from "react";
 function Header(props) {
   return (
     <header className="header">
-      <h1>{props.title}</h1>
+      <h1>{props.todoList.title}</h1>
       <section classname="user__container">
         <h1>{props.user.name}</h1>
         <img src={props.user.avatarURL} alt="User Avatar" />
