@@ -26,20 +26,20 @@ const todoList = [
 
 const user = {
   name: "William",
-  avatarURL: "http://www.fillmurray.com/100/100",
+  avatarURL: require("./img/avatar.svg"),
 };
 
-function App() {
+function App(props) {
   return (
     <div className="body">
       <Header title="Todo.ly" />
       <main className="todo-list">
-        <h1>{todoList.title}</h1>
+        <h1>{props.title}</h1>
         <ul>
           {todoList.map((todo) => (
             <li>
-              <p>{todoList.title}</p>
-              <p>{todoList.description}</p>
+              <p>{props.title}</p>
+              <p>{props.description}</p>
             </li>
           ))}
         </ul>
