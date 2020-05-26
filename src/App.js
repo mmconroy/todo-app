@@ -10,19 +10,25 @@ class App extends Component {
     todoList: [
       {
         id: 1,
-        title: "item title",
+        title: "Do laundry",
         description: "your description",
         completed: false,
       },
       {
         id: 2,
-        title: "item title",
+        title: "Go to the grocery store",
         description: "your description",
         completed: false,
       },
       {
         id: 3,
-        title: "item title",
+        title: "Craft a warm email introduction",
+        description: "your description",
+        completed: false,
+      },
+      {
+        id: 4,
+        title: "Put the beer in the fridge",
         description: "your description",
         completed: false,
       },
@@ -35,13 +41,13 @@ class App extends Component {
   };
 
   handleAddNewTask = () => {
-    let newTaskObject = {
-      name: this.state.newTask,
+    let newTask = {
+      title: this.state.newTask,
     };
-    this.setState((state) => ({
-      todoList: [...state.todoList, newTaskObject],
-      newTaskObject: "",
-    }));
+    this.setState({
+      todoList: [...this.state.todoList, newTask],
+      newTask: "",
+    });
   };
 
   render() {
@@ -52,7 +58,17 @@ class App extends Component {
         <div>
           <ul className="todoList">
             {this.state.todoList.map((todo, index) => (
-              <li key={index}></li>
+              <li key={index}>
+                <p>{todo.title}</p>
+                <label>
+                  <input
+                    type="checkbox"
+                    onChange={(event) =>
+                      this.setState({ isOnMailingList: event.target.checked })
+                    }
+                  />{" "}
+                </label>
+              </li>
             ))}
           </ul>
           <input
@@ -60,6 +76,7 @@ class App extends Component {
             value={this.state.newTask}
             onChange={this.handleInputChange}
           ></input>
+
           <button onClick={this.handleAddNewTask}>Add new task</button>
         </div>
         <Details title="Task Details" />
