@@ -27,7 +27,7 @@ class App extends Component {
         completed: false,
       },
     ],
-    newTaskO: "",
+    newTask: "",
   };
 
   handleInputChange = (event) => {
@@ -49,6 +49,19 @@ class App extends Component {
       <div className="app">
         <Header numTodos={this.state.todoList.length} />
         <Todolist newTask={this.state.newTask} />
+        <div>
+          <ul className="todoList">
+            {this.state.todoList.map((todo, index) => (
+              <li key={index}></li>
+            ))}
+          </ul>
+          <input
+            type="text"
+            value={this.state.newTask}
+            onChange={this.handleInputChange}
+          ></input>
+          <button onClick={this.handleAddNewTask}>Add new task</button>
+        </div>
         <Details title="Task Details" />
       </div>
     );
