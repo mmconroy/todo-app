@@ -13,8 +13,8 @@
 
 .header {
   display: flex;
-  flex-direction: column;
-  padding: 2rem;
+  flex-direction: row;
+  padding: rem;
 }
 
 nav {

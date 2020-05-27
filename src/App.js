@@ -3,7 +3,6 @@ import "./App.css";
 import Header from "./components/Header";
 import Details from "./components/Details";
 import Todolist from "./components/Todolist";
-import { render } from "@testing-library/react";
 
 class App extends Component {
   state = {
@@ -35,7 +34,6 @@ class App extends Component {
     ],
     newTask: "",
   };
-
   handleInputChange = (event) => {
     this.setState({ newTask: event.target.value });
   };
@@ -50,34 +48,50 @@ class App extends Component {
     });
   };
 
+  onChangeCheckbox = (id) => {
+    this.setState(() => {
+      const newList = this.state.todoList.map((item) => {
+        if (item.id === id) {
+          return { ...item, completed: item.completed ? false : true };
+        } else {
+          return item;
+        }
+      });
+      return {
+        todoList: newList,
+      };
+    });
+  };
+
+  deleteItem = (id) => {
+    const list = [...this.state.todoList];
+
+    const updatedList = list.filter((item) => item.id !== id);
+
+    this.setState({ todoList: updatedList });
+  };
+
   render() {
     return (
       <div className="app">
         <Header numTodos={this.state.todoList.length} />
-        <Todolist newTask={this.state.newTask} />
-        <div>
+        <div className="Sidebar">
           <ul className="todoList">
-            {this.state.todoList.map((todo, index) => (
-              <li key={index}>
-                <p>{todo.title}</p>
-                <label>
-                  <input
-                    type="checkbox"
-                    onChange={(event) =>
-                      this.setState({ isOnMailingList: event.target.checked })
-                    }
-                  />{" "}
-                </label>
-              </li>
+            {this.state.todoList.map((todoList, index) => (
+              <Todolist
+                todoItem={todoList}
+                onChangeCheckbox={this.onChangeCheckbox}
+                deleteItem={this.deleteItem}
+                key={index}
+              />
             ))}
+            <input
+              type="text"
+              value={this.newTask}
+              onChange={this.handleInputChange}
+            ></input>
+            <button onClick={this.handleAddNewTask}>Add new task</button>
           </ul>
-          <input
-            type="text"
-            value={this.state.newTask}
-            onChange={this.handleInputChange}
-          ></input>
-
-          <button onClick={this.handleAddNewTask}>Add new task</button>
         </div>
         <Details title="Task Details" />
       </div>
