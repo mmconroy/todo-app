@@ -77,9 +77,9 @@ class App extends Component {
         <Header numTodos={this.state.todoList.length} />
         <div className="Sidebar">
           <ul className="todoList">
-            {this.state.todoList.map((todoList, index) => (
+            {this.state.todoList.map((todoItem, index) => (
               <Todolist
-                todoItem={todoList}
+                todoItem={todoItem}
                 onChangeCheckbox={this.onChangeCheckbox}
                 deleteItem={this.deleteItem}
                 key={index}

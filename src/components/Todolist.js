@@ -4,17 +4,15 @@ function Todolist(props) {
   return (
     <main className="todo-list">
       <li>
-        <p>{props.title}</p>
         <input
           type="checkbox"
-          onChange={(event) =>
-            this.setState({ onChangeCheckbox: event.target.checked })
-          }
+          onChange={(event) => ({ onChangeCheckbox: event.target.checked })}
         />{" "}
+        <p>{props.todoItem.title}</p>{" "}
       </li>
       <button
         className="delete_button"
-        onClick={() => props.deleteItem(props.id)}
+        onClick={() => props.deleteItem(props.todoItem.id)}
       >
         Delete Item
       </button>
