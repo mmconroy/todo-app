@@ -4,7 +4,8 @@ import Header from "./components/Header";
 import Details from "./components/Details";
 import Todolist from "./components/Todolist";
 
-class App extends Component {
+const TODOS_KEY = "myapp_todos";
+class App extends React.Component {
   state = {
     todoList: [
       {
@@ -37,6 +38,19 @@ class App extends Component {
   handleInputChange = (event) => {
     this.setState({ newTask: event.target.value });
   };
+
+  componentDidMount() {
+    const todoString = localStorage.getItem(TODOS_KEY);
+    if (todoString) {
+      this.setState({ todoList: JSON.parse(todoString) });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.todoList !== this.state.todoList) {
+      localStorage.setItem(TODOS_KEY, JSON.stringify(this.state.todoList));
+    }
+  }
 
   handleAddNewTask = () => {
     let newTask = {
