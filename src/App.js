@@ -88,8 +88,22 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        ></link>
         <Header numTodos={this.state.todoList.length} />
-        <div className="Sidebar">
+        <div className="task-input">
+          <input
+            type="text"
+            value={this.newTask}
+            onChange={this.handleInputChange}
+          ></input>
+          <button className="newtask-btn" onClick={this.handleAddNewTask}>
+            Add new task
+          </button>
+        </div>
+        <div>
           <ul className="todoList">
             {this.state.todoList.map((todoItem, index) => (
               <Todolist
@@ -99,12 +113,6 @@ class App extends React.Component {
                 key={index}
               />
             ))}
-            <input
-              type="text"
-              value={this.newTask}
-              onChange={this.handleInputChange}
-            ></input>
-            <button onClick={this.handleAddNewTask}>Add new task</button>
           </ul>
         </div>
         <Details title="Task Details" />
