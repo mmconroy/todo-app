@@ -5,7 +5,7 @@ import Details from "./components/Details";
 import Todolist from "./components/Todolist";
 
 const TODOS_KEY = "myapp_todos";
-class App extends React.Component {
+class App extends Component {
   state = {
     todoList: [
       {
@@ -35,10 +35,6 @@ class App extends React.Component {
     ],
     newTask: "",
   };
-  handleInputChange = (event) => {
-    this.setState({ newTask: event.target.value });
-  };
-
   componentDidMount() {
     const todoString = localStorage.getItem(TODOS_KEY);
     if (todoString) {
@@ -51,6 +47,9 @@ class App extends React.Component {
       localStorage.setItem(TODOS_KEY, JSON.stringify(this.state.todoList));
     }
   }
+  handleInputChange = (event) => {
+    this.setState({ newTask: event.target.value });
+  };
 
   handleAddNewTask = () => {
     let newTask = {
@@ -77,10 +76,10 @@ class App extends React.Component {
     });
   };
 
-  deleteItem = (id) => {
+  deleteItem = (title) => {
     const list = [...this.state.todoList];
 
-    const updatedList = list.filter((item) => item.id !== id);
+    const updatedList = list.filter((item) => item.title !== title);
 
     this.setState({ todoList: updatedList });
   };

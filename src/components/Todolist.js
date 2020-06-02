@@ -12,7 +12,7 @@ function Todolist(props) {
       </li>
       <button
         className="delete_button"
-        onClick={() => props.deleteItem(props.todoItem.id)}
+        onClick={() => props.deleteItem(props.todoItem.title)}
       >
         Delete Item
       </button>
