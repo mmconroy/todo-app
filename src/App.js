@@ -40,25 +40,19 @@ class App extends React.Component {
     });
   };
 
-  // onChangeCheckbox = (id) => {
-  //   this.setState(() => {
-  //     const newList = this.state.todoList.map((item) => {
-  //       if (item.id === id) {
-  //         return { ...item, completed: item.completed ? false : true };
-  //       } else {
-  //         return item;
-  //       }
-  //     });
-  //     return {
-  //       todoList: newList,
-  //     };
-  //   });
-  // };
-
   onChangeCheckbox = (id) => {
-    this.setState((prevState) => ({
-      completed: !prevState.completed,
-    }));
+    this.setState((state) => {
+      const newList = state.todoList.map((item) => {
+        if (item.id === id) {
+          return { ...item, completed: item.completed ? false : true };
+        } else {
+          return item;
+        }
+      });
+      return {
+        todoList: newList,
+      };
+    });
   };
 
   deleteItem = (title) => {
@@ -93,7 +87,7 @@ class App extends React.Component {
             {this.state.todoList.map((todoItem, index) => (
               <Todolist
                 todoItem={todoItem}
-                onChangeCheckbox={this.onChangeCheckbox}
+                onChangeCheckbox={() => this.onChangeCheckbox(todoItem.id)}
                 deleteItem={this.deleteItem}
                 key={index}
               />
