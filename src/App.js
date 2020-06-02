@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import shortid from "shortid";
 import Header from "./components/Header";
 import Details from "./components/Details";
 import Todolist from "./components/Todolist";
@@ -7,32 +8,7 @@ import Todolist from "./components/Todolist";
 const TODOS_KEY = "myapp_todos";
 class App extends React.Component {
   state = {
-    todoList: [
-      {
-        id: 1,
-        title: "Do laundry",
-        description: "your description",
-        completed: false,
-      },
-      {
-        id: 2,
-        title: "Go to the grocery store",
-        description: "your description",
-        completed: false,
-      },
-      {
-        id: 3,
-        title: "Craft a warm email introduction",
-        description: "your description",
-        completed: false,
-      },
-      {
-        id: 4,
-        title: "Put the beer in the fridge",
-        description: "your description",
-        completed: false,
-      },
-    ],
+    todoList: [],
     newTask: "",
   };
   handleInputChange = (event) => {
@@ -54,7 +30,9 @@ class App extends React.Component {
 
   handleAddNewTask = () => {
     let newTask = {
+      id: shortid.generate(),
       title: this.state.newTask,
+      completed: false,
     };
     this.setState({
       todoList: [...this.state.todoList, newTask],
@@ -62,25 +40,31 @@ class App extends React.Component {
     });
   };
 
+  // onChangeCheckbox = (id) => {
+  //   this.setState(() => {
+  //     const newList = this.state.todoList.map((item) => {
+  //       if (item.id === id) {
+  //         return { ...item, completed: item.completed ? false : true };
+  //       } else {
+  //         return item;
+  //       }
+  //     });
+  //     return {
+  //       todoList: newList,
+  //     };
+  //   });
+  // };
+
   onChangeCheckbox = (id) => {
-    this.setState(() => {
-      const newList = this.state.todoList.map((item) => {
-        if (item.id === id) {
-          return { ...item, completed: item.completed ? false : true };
-        } else {
-          return item;
-        }
-      });
-      return {
-        todoList: newList,
-      };
-    });
+    this.setState((prevState) => ({
+      completed: !prevState.completed,
+    }));
   };
 
-  deleteItem = (id) => {
+  deleteItem = (title) => {
     const list = [...this.state.todoList];
 
-    const updatedList = list.filter((item) => item.id !== id);
+    const updatedList = list.filter((item) => item.title !== title);
 
     this.setState({ todoList: updatedList });
   };
@@ -96,6 +80,7 @@ class App extends React.Component {
         <div className="task-input">
           <input
             type="text"
+            defaultValue=" "
             value={this.newTask}
             onChange={this.handleInputChange}
           ></input>

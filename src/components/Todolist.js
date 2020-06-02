@@ -1,20 +1,29 @@
 import React from "react";
+import { MdDelete } from "react-icons/md";
+import { MdCheck } from "react-icons/md";
 
 function Todolist(props) {
   return (
     <main className="todo-list">
       <li className="todo-card">
-        <input
-          type="checkbox"
-          onChange={(event) => ({ onChangeCheckbox: event.target.checked })}
-        />
-        <p>{props.todoItem.title}</p>{" "}
-        <button
-          className="delete_button"
-          onClick={() => props.deleteItem(props.todoItem.id)}
-        >
-          Delete Item
-        </button>
+        <p style={props.completed ? { textDecoration: "line-through" } : null}>
+          {props.todoItem.title}
+        </p>{" "}
+        <div classname="icons">
+          {" "}
+          <MdCheck
+            color="white"
+            padding="2px"
+            size="24px"
+            onClick={() => props.onChangeCheckbox(props.todoItem.completed)}
+          />
+          <MdDelete
+            color="white"
+            padding="2px"
+            size="24px"
+            onClick={() => props.deleteItem(props.todoItem.title)}
+          ></MdDelete>
+        </div>
       </li>
     </main>
   );
