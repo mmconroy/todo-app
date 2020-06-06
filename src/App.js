@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import shortid from "shortid";
 import Header from "./components/Header";
 import Details from "./components/Details";
 import Todolist from "./components/Todolist";
+import Dashboard from "./components/Dashboard";
+import { Route, Switch } from "react-router-dom";
 
 const TODOS_KEY = "myapp_todos";
 class App extends React.Component {
@@ -66,35 +68,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
-        ></link>
         <Header numTodos={this.state.todoList.length} />
-        <div className="task-input">
-          <input
-            type="text"
-            defaultValue=" "
-            value={this.newTask}
-            onChange={this.handleInputChange}
-          ></input>
-          <button className="newtask-btn" onClick={this.handleAddNewTask}>
-            Add new task
-          </button>
-        </div>
-        <div>
-          <ul className="todoList">
-            {this.state.todoList.map((todoItem, index) => (
-              <Todolist
-                todoItem={todoItem}
-                onChangeCheckbox={() => this.onChangeCheckbox(todoItem.id)}
-                deleteItem={this.deleteItem}
-                key={index}
-              />
-            ))}
-          </ul>
-        </div>
-        <Details title="Task Details" />
+        <Switch>
+          <Route exact path="/" />
+          <Dashboard />
+          <Route path="/details" />
+          <Details />
+        </Switch>
       </div>
     );
   }

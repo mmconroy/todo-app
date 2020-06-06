@@ -2,28 +2,55 @@ import React from "react";
 
 const user = {
   name: "Username",
-  avatarURL: "https://api.adorable.io/avatars/40/abott@adorable.png",
+  avatarURL: "https://placeimg.com/40/40/any",
 };
 
 function Header(props) {
   return (
-    <header className="header">
+    <header>
       <section className="user__container">
         <div className="hamburger-menu">
-          <i class="material-icons">menu</i>
+          <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+          ></link>
+          <i class="material-icons" id="hamburger-menu">
+            menu
+          </i>
         </div>
         <p className="username">{user.name}</p>
-        <img classNanme="profile-img" src={user.avatarURL}></img>
-        <h1>Your Tasks</h1>
+        <img className="profile-img" src={user.avatarrURL}></img>
       </section>
-      <nav className="sidenav">
-        <a href="#">Inbox</a>
-        <a href="#">Today</a>
-        <a href="#">Upcoming</a>
-        <a href="#">Completed</a>
-        <a href="#">Overdue</a>
-        <a href="#">Deleted</a>
-        <a href="#">Settings</a>
+      <h1>Your Tasks</h1>
+
+      <nav>
+        <ul>
+          <li>
+            <a class="Link" href="#">
+              <span class="Link-title">Inbox</span>
+            </a>
+          </li>
+          <li>
+            <a class="Link" href="#">
+              <span class="Link-title">Today</span>
+            </a>
+          </li>
+          <li>
+            <a class="Link" href="#">
+              <span class="Link-title">Upcoming</span>
+            </a>
+          </li>
+          <li>
+            <a class="Link" href="#">
+              <span class="Link-title">Completed</span>
+            </a>
+          </li>
+          <li>
+            <a class="Link" href="#">
+              <span class="Link-title">Deleted</span>
+            </a>
+          </li>
+        </ul>
       </nav>
     </header>
   );

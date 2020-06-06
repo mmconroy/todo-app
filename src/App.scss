@@ -27,7 +27,12 @@ header {
   z-index: 1;
   background-color: black;
   font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 1.5rem;
+  letter-spacing: 0.1rem;
+}
+
+#hamburger-menu {
+  position: fixed;
+  left: 16px;
 }
 
 .title {
@@ -61,28 +66,19 @@ header {
   right: 16px;
 }
 
-.hamburger-menu {
-  position: fixed;
-  left: 16px;
-}
-
-.sidenav {
-  display: none;
-}
-
 .task-input {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   width: 100%;
-  margin: 2rem 1rem 0 1rem;
-  padding: 2rem;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
 }
 
 .task-input > input,
 .newtask-btn {
-  width: 100%;
+  width: 80%;
   height: 32px;
 }
 
@@ -91,7 +87,6 @@ header {
   flex-direction: column;
   justify-content: flex-start;
   flex-wrap: wrap;
-  padding: 0 0 1rem 0;
   list-style-type: none;
   color: white;
   width: 100%;
@@ -102,7 +97,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1rem;
+  align-items: center;
   width: 100vw;
   height: 128px;
   background: linear-gradient(to bottom, #b87128 0%, #d73788 88%);
