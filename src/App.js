@@ -70,10 +70,12 @@ class App extends React.Component {
       <div className="app">
         <Header numTodos={this.state.todoList.length} />
         <Switch>
-          <Route exact path="/" />
-          <Dashboard />
-          <Route path="/details" />
-          <Details />
+          <Route exact path="/">
+            <Dashboard />
+          </Route>
+          <Route path="/details">
+            <Details />
+          </Route>
         </Switch>
       </div>
     );
