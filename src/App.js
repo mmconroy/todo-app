@@ -1,72 +1,115 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
-import avatar from "./img/avatar.svg";
+import Header from "./components/Header";
+import Details from "./components/Details";
+import Todolist from "./components/Todolist";
 
-function App() {
-  return (
-    <div className="title">
-      <h1>Todo.ly</h1>
-      <header className="header">
-        <img src={avatar} alt="Avatar"></img>
-        <h2>Username</h2>
-      </header>
-      <nav className="sidenav">
-        <a href="#">Nav 1</a>
-        <a href="#">Nav 2</a>
-        <a href="#">Nav 3</a>
-        <a href="#">Nav 4</a>
-        <a href="#">Nav 5</a>
-        <a href="#">Nav 6</a>
-        <a href="#">Settings</a>
-      </nav>
-      <main className="todo-list">
-        <h1 className="your-tasks">Your Tasks</h1>
-        <input type="text" placeholder="Search Here"></input>
-        <input type="checkbox" id="task1" name="task1" value="FirstTask" />
-        <label for="task1"> First Todo Item</label>
-        <input type="checkbox" id="task2" name="task2" value="SecondTask" />
-        <label for="task1"> Second Todo Item</label>
-        <input type="checkbox" id="task3" name="task3" value="ThirdTask" />
-        <label for="task1"> Third Todo Item</label>
-        <input type="checkbox" id="task4" name="task4" value="FourthTask" />
-        <label for="task1"> Fourth Todo Item</label>
-        <input type="checkbox" id="task5" name="task5" value="FifthTask" />
-        <label for="task1"> Fifth Todo Item</label>
-        <button type="button">Add a New Task</button>
-      </main>
+const TODOS_KEY = "myapp_todos";
+class App extends Component {
+  state = {
+    todoList: [
+      {
+        id: 1,
+        title: "Do laundry",
+        description: "your description",
+        completed: false,
+      },
+      {
+        id: 2,
+        title: "Go to the grocery store",
+        description: "your description",
+        completed: false,
+      },
+      {
+        id: 3,
+        title: "Craft a warm email introduction",
+        description: "your description",
+        completed: false,
+      },
+      {
+        id: 4,
+        title: "Put the beer in the fridge",
+        description: "your description",
+        completed: false,
+      },
+    ],
+    newTask: "",
+  };
+  componentDidMount() {
+    const todoString = localStorage.getItem(TODOS_KEY);
+    if (todoString) {
+      this.setState({ todoList: JSON.parse(todoString) });
+    }
+  }
 
-      <section className="task-details">
-        <h1 className="task-details">Task Details</h1>
-        <button type="button">Edit Task Name</button>
-        <input
-          type="checkbox"
-          id="=detail1"
-          name="detail1"
-          value="FirstDetail"
-        />
-        <label for="task1"> First Task Detail </label>
-        <button type="button">Delete Detail</button>
-        <input
-          type="checkbox"
-          id="=detail2"
-          name="detail2"
-          value="SecondDetail"
-        />
-        <label for="task1"> Second Task Detail </label>
-        <button type="button">Delete Detail</button>
-        <input
-          type="checkbox"
-          id="=detail3"
-          name="detail3"
-          value="ThirdDetail"
-        />
-        <label for="task1"> Third Task Detail </label>
-        <button type="button">Delete Detail</button>
-        <button type="button">Add a New Detail</button>
-        <button type="button">Share Details</button>
-      </section>
-    </div>
-  );
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.todoList !== this.state.todoList) {
+      localStorage.setItem(TODOS_KEY, JSON.stringify(this.state.todoList));
+    }
+  }
+  handleInputChange = (event) => {
+    this.setState({ newTask: event.target.value });
+  };
+
+  handleAddNewTask = () => {
+    let newTask = {
+      title: this.state.newTask,
+    };
+    this.setState({
+      todoList: [...this.state.todoList, newTask],
+      newTask: "",
+    });
+  };
+
+  onChangeCheckbox = (id) => {
+    this.setState(() => {
+      const newList = this.state.todoList.map((item) => {
+        if (item.id === id) {
+          return { ...item, completed: item.completed ? false : true };
+        } else {
+          return item;
+        }
+      });
+      return {
+        todoList: newList,
+      };
+    });
+  };
+
+  deleteItem = (title) => {
+    const list = [...this.state.todoList];
+
+    const updatedList = list.filter((item) => item.title !== title);
+
+    this.setState({ todoList: updatedList });
+  };
+
+  render() {
+    return (
+      <div className="app">
+        <Header numTodos={this.state.todoList.length} />
+        <div className="Sidebar">
+          <ul className="todoList">
+            {this.state.todoList.map((todoItem, index) => (
+              <Todolist
+                todoItem={todoItem}
+                onChangeCheckbox={this.onChangeCheckbox}
+                deleteItem={this.deleteItem}
+                key={index}
+              />
+            ))}
+            <input
+              type="text"
+              value={this.newTask}
+              onChange={this.handleInputChange}
+            ></input>
+            <button onClick={this.handleAddNewTask}>Add new task</button>
+          </ul>
+        </div>
+        <Details title="Task Details" />
+      </div>
+    );
+  }
 }
 
 export default App;
