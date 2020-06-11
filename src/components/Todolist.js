@@ -4,11 +4,6 @@ import { MdDelete } from "react-icons/md";
 import { MdCheck } from "react-icons/md";
 import { MdDetails } from "react-icons/md";
 
-function bgRandomColor() {
-  const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
-  return randomColor;
-}
-
 function Todolist(props) {
   return (
     <main className="todo-list">
@@ -19,7 +14,7 @@ function Todolist(props) {
       <li
         className="todo-card"
         style={{
-          backgroundColor: bgRandomColor(),
+          backgroundColor: props.todoItem.backgroundColor,
         }}
       >
         <p

@@ -1,9 +1,5 @@
 .dashboard__wrapper {
   background-image: url(./london-background.jpg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 100%;
 }
 

@@ -50,7 +50,14 @@ class Details extends React.Component {
 
   render() {
     return (
-      <div className="details__wrapper">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          marginTop: "5rem",
+          width: "100%",
+        }}
+      >
         <div className="form-title-text">
           <label>
             Title
@@ -63,7 +70,18 @@ class Details extends React.Component {
           </label>
         </div>
         <div className="form-descriptopn-text">
-          <label className="description-input">Description</label>
+          <label
+            className="description-input"
+            style={{
+              color: "black",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            Description
+          </label>
           <textarea
             value={this.state.form.description}
             onChange={this.handleChange}
@@ -104,7 +122,7 @@ class Details extends React.Component {
           </select>
         </div>
         <div>
-          <button type="submit" onSubmit={this.handleSubmit}>
+          <button type="submit" onClick={this.handleSubmit}>
             Update Changes
           </button>
         </div>

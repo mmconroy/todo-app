@@ -13,16 +13,6 @@ header {
     0px 2px 4px rgba(0, 0, 0, 0.14);
 }
 
-.username {
-  display: block;
-  color: black;
-  font-size: 0.5rem;
-  font-family: "SF Pro Display";
-  font-size: 16px;
-  line-height: 1.3;
-  padding-bottom: 1rem;
-}
-
 .nav-title {
   color: black;
   font-weight: 100;
@@ -51,15 +41,6 @@ nav {
 
 .nav:hover {
   cursor: pointer;
-}
-
-nav ul {
-  margin-bottom: 4px;
-  font-weight: 300;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  margin-left: 1.5rem;
 }
 
 nav li {

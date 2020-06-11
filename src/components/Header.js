@@ -29,9 +29,31 @@ function Header(props) {
         <span></span>
       </label>
       <nav>
-        <ul>
+        <ul
+          style={{
+            marginBottom: "4px",
+            fontWeight: "300",
+            listStyle: "none",
+            display: "flex",
+            flexDirection: "column",
+            marginLeft: "1.5rem",
+          }}
+        >
           <li>
-            <p className="username">{user.name}</p>
+            <p
+              className="username"
+              style={{
+                display: "block",
+                color: "black",
+                fontSize: "0.5rem",
+                fontFamily: "SF Pro Display",
+                fontSize: "16px",
+                lineHeight: "1.3",
+                paddingBottom: "1rem",
+              }}
+            >
+              {user.name}
+            </p>
             <img className="profile-img" src={user.avatarURL}></img>
           </li>
           <li>

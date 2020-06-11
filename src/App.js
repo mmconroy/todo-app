@@ -10,6 +10,11 @@ import Todolist from "./components/Todolist";
 import { Route, Switch, withRouter } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 
+function bgRandomColor() {
+  const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+  return randomColor;
+}
+
 const TODOS_KEY = "myapp_todos";
 class App extends React.Component {
   state = {
@@ -41,6 +46,7 @@ class App extends React.Component {
       completed: false,
       description: "",
       priority: "",
+      backgroundColor: bgRandomColor(),
     };
     this.setState({
       todoList: [...this.state.todoList, newTask],
@@ -71,17 +77,17 @@ class App extends React.Component {
     this.setState({ todoList: updatedList });
   };
 
-  handleSubmit = (id, form) => {
+  handleSubmit = (form) => {
     this.setState((state) => {
-      let updatedForm = state.form.map((form) => {
-        if (id === form.id) {
+      let updatedList = state.todoList.map((item) => {
+        if (form.id === item.id) {
           return { ...form };
         } else {
-          return form;
+          return item;
         }
       });
       return {
-        form: updatedForm,
+        todoList: updatedList,
       };
     });
   };
@@ -95,33 +101,35 @@ class App extends React.Component {
             <Details
               todoList={this.state.todoList}
               priroityOptions={this.state.priroityOptions}
-              DetailsId={this.state.id}
+              onSubmit={this.handleSubmit}
             />
           </Route>
-          <div>
-            <div className="task-input">
-              <input
-                type="text"
-                defaultValue=" "
-                value={this.newTask}
-                onChange={this.handleInputChange}
-              ></input>
-              <button className="newtask-btn" onClick={this.handleAddNewTask}>
-                Add new task
-              </button>
+          <Route path="/todolist/">
+            <div>
+              <div className="task-input">
+                <input
+                  type="text"
+                  defaultValue=" "
+                  value={this.newTask}
+                  onChange={this.handleInputChange}
+                ></input>
+                <button className="newtask-btn" onClick={this.handleAddNewTask}>
+                  Add new task
+                </button>
+              </div>
+              <ul className="todoList">
+                {this.state.todoList.map((todoItem, index) => (
+                  <Todolist
+                    todoItem={todoItem}
+                    onChangeCheckbox={() => this.onChangeCheckbox(todoItem.id)}
+                    deleteItem={this.deleteItem}
+                    key={index}
+                  />
+                ))}
+              </ul>
             </div>
-            <ul className="todoList">
-              {this.state.todoList.map((todoItem, index) => (
-                <Todolist
-                  todoItem={todoItem}
-                  onChangeCheckbox={() => this.onChangeCheckbox(todoItem.id)}
-                  deleteItem={this.deleteItem}
-                  key={index}
-                />
-              ))}
-            </ul>
-          </div>
-          <Route exact path="/components/Dashboard">
+          </Route>
+          <Route path="/">
             <Dashboard />
           </Route>
         </Switch>
