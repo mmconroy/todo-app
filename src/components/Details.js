@@ -59,29 +59,16 @@ class Details extends React.Component {
         }}
       >
         <div className="form-title-text">
-          <label>
-            Title
-            <input
-              type="text"
-              name="title"
-              value={this.state.form.title}
-              onChange={this.handleChange}
-            ></input>
-          </label>
+          <label>Title</label>
+          <input
+            type="text"
+            name="title"
+            value={this.state.form.title}
+            onChange={this.handleChange}
+          ></input>
         </div>
         <div className="form-descriptopn-text">
-          <label
-            className="description-input"
-            style={{
-              color: "black",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            Description
-          </label>
+          <label className="description-input">Description</label>
           <textarea
             value={this.state.form.description}
             onChange={this.handleChange}

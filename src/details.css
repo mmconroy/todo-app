@@ -3,7 +3,12 @@
 .form-completed-checkbox,
 .form-priority-dropdown,
 label {
-  padding: 0.75rem;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
 .taskGoBackLink,
