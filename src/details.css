@@ -1,0 +1,15 @@
+.form-title-text,
+.form-description-text,
+.form-completed-checkbox,
+.form-priority-dropdown,
+label {
+  padding: 0.75rem;
+}
+
+.taskGoBackLink,
+label {
+  text-decoration: none;
+  color: black;
+  font-family: sans-serif;
+  padding: 1rem;
+}

@@ -1,17 +1,26 @@
 import React from "react";
 import "./App.css";
+import "./dashboard.css";
+import "./details.css";
+import "./header.css";
 import shortid from "shortid";
 import Header from "./components/Header";
 import Details from "./components/Details";
 import Todolist from "./components/Todolist";
+import { Route, Switch, withRouter } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
-import { Route, Switch } from "react-router-dom";
+
+function bgRandomColor() {
+  const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+  return randomColor;
+}
 
 const TODOS_KEY = "myapp_todos";
 class App extends React.Component {
   state = {
     todoList: [],
     newTask: "",
+    priroityOptions: ["Low", "Medium", "High", "Hair on Fire"],
   };
   handleInputChange = (event) => {
     this.setState({ newTask: event.target.value });
@@ -35,6 +44,9 @@ class App extends React.Component {
       id: shortid.generate(),
       title: this.state.newTask,
       completed: false,
+      description: "",
+      priority: "",
+      backgroundColor: bgRandomColor(),
     };
     this.setState({
       todoList: [...this.state.todoList, newTask],
@@ -65,16 +77,60 @@ class App extends React.Component {
     this.setState({ todoList: updatedList });
   };
 
+  handleSubmit = (form) => {
+    this.setState((state) => {
+      let updatedList = state.todoList.map((item) => {
+        if (form.id === item.id) {
+          return { ...form };
+        } else {
+          return item;
+        }
+      });
+      return {
+        todoList: updatedList,
+      };
+    });
+  };
+
   render() {
     return (
       <div className="app">
         <Header numTodos={this.state.todoList.length} />
         <Switch>
-          <Route exact path="/">
-            <Dashboard />
+          <Route path="/Details/:itemId">
+            <Details
+              todoList={this.state.todoList}
+              priroityOptions={this.state.priroityOptions}
+              onSubmit={this.handleSubmit}
+            />
           </Route>
-          <Route path="/details">
-            <Details />
+          <Route path="/todolist/">
+            <div>
+              <div className="task-input">
+                <input
+                  type="text"
+                  defaultValue=" "
+                  value={this.newTask}
+                  onChange={this.handleInputChange}
+                ></input>
+                <button className="newtask-btn" onClick={this.handleAddNewTask}>
+                  Add new task
+                </button>
+              </div>
+              <ul className="todoList">
+                {this.state.todoList.map((todoItem, index) => (
+                  <Todolist
+                    todoItem={todoItem}
+                    onChangeCheckbox={() => this.onChangeCheckbox(todoItem.id)}
+                    deleteItem={this.deleteItem}
+                    key={index}
+                  />
+                ))}
+              </ul>
+            </div>
+          </Route>
+          <Route path="/">
+            <Dashboard />
           </Route>
         </Switch>
       </div>
@@ -82,4 +138,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(App);
