@@ -3,28 +3,21 @@ import { withRouter } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { MdCheck } from "react-icons/md";
 import { MdDetails } from "react-icons/md";
+import { StyledTodoCard } from "./todolist.styled";
+import { StyledTodoTitle } from "./todolist.styled";
+import { StyledTodoList } from "./todolist.styled";
+import { StyledIcons } from "./todolist.styled";
 
 function Todolist(props) {
   return (
-    <main className="todo-list">
+    <StyledTodoList>
       <link
         href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet"
       ></link>
-      <li
-        className="todo-card"
-        style={{
-          backgroundColor: props.todoItem.backgroundColor,
-        }}
-      >
-        <p
-          style={
-            props.todoItem.completed ? { textDecoration: "line-through" } : null
-          }
-        >
-          {props.todoItem.title}
-        </p>{" "}
-        <div className="icons">
+      <StyledTodoCard>
+        <StyledTodoTitle>{props.todoItem.title}</StyledTodoTitle>{" "}
+        <StyledIcons>
           {" "}
           <MdCheck
             color="white"
@@ -44,9 +37,9 @@ function Todolist(props) {
             size="24px"
             onClick={() => props.history.push("/Details/" + props.todoItem.id)}
           ></MdDetails>
-        </div>
-      </li>
-    </main>
+        </StyledIcons>
+      </StyledTodoCard>
+    </StyledTodoList>
   );
 }
 
