@@ -5,8 +5,7 @@
 }
 
 body {
-  background-color: black;
-  color: white;
+  color: #fffbfe;
   text-align: center;
 }
 
@@ -17,31 +16,6 @@ body {
   justify-content: center;
 }
 
-header {
-  display: flex;
-  width: 100%;
-  height: 56px;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  z-index: 1;
-  background-color: black;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 0.1rem;
-}
-
-#hamburger-menu {
-  position: fixed;
-  left: 16px;
-}
-
-.title {
-  width: 100%;
-  font-size: 16px;
-  line-height: 2;
-  color: white;
-}
-
 .user__container {
   display: flex;
   flex-direction: column;
@@ -50,17 +24,9 @@ header {
   z-index: 1;
 }
 
-.username {
-  display: none;
-  font-size: 0.5rem;
-  font-family: "SF Pro Display";
-  font-size: 32px;
-  line-height: 1.3;
-}
-
 .user__container > img {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   position: fixed;
   right: 16px;
@@ -78,8 +44,8 @@ header {
 
 .task-input > input,
 .newtask-btn {
-  width: 80%;
-  height: 32px;
+  width: 15rem;
+  height: 28px;
 }
 
 .todoList {
@@ -90,12 +56,6 @@ header {
   list-style-type: none;
   color: white;
   width: 100%;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
-.dashboard {
-  position: fixed;
-  top: 50%;
 }
 
 .todo-card {
@@ -105,7 +65,15 @@ header {
   align-items: center;
   width: 100vw;
   height: 128px;
-  background: linear-gradient(to bottom, #b87128 0%, #d73788 88%);
+  // background: linear-gradient(to bottom, #b87128 0%, #d73788 88%);
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.14);
+}
+
+.icons {
+  display: flex;
+  width: 8rem;
+  justify-content: space-evenly;
 }
 
 .todo-card > p {
@@ -133,7 +101,7 @@ header {
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
-  color: white;
+  color: black;
 
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
@@ -145,4 +113,13 @@ header {
 
   /* Support for IE. */
   font-feature-settings: "liga";
+}
+
+.details__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
 }

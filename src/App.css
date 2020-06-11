@@ -6,8 +6,7 @@
 }
 
 body {
-  background-color: black;
-  color: white;
+  color: #fffbfe;
   text-align: center;
 }
 
@@ -26,32 +25,6 @@ body {
           justify-content: center;
 }
 
-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  height: 56px;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: fixed;
-  z-index: 1;
-  background-color: black;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 0.1rem;
-}
-
-.title {
-  width: 100%;
-  font-size: 16px;
-  line-height: 2;
-  color: white;
-}
-
 .user__container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -67,86 +40,12 @@ header {
   z-index: 1;
 }
 
-.username {
-  display: none;
-  font-size: 0.5rem;
-  font-family: "SF Pro Display";
-  font-size: 32px;
-  line-height: 1.3;
-}
-
 .user__container > img {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   position: fixed;
   right: 16px;
-}
-
-.hamburger-menu {
-  position: fixed;
-  left: 16px;
-}
-
-nav {
-  width: 9rem;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  position: absolute;
-  text-align: left;
-  top: 100%;
-  left: 0;
-  background: white;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
-  display: none;
-  margin: 0;
-}
-
-nav ul {
-  margin-bottom: 4px;
-  font-weight: 300;
-  list-style: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin-left: 1rem;
-}
-
-nav li {
-  font-family: "SF Pro Display";
-  margin: 8px;
-}
-
-nav a {
-  color: black;
-  text-decoration: none;
-  font-size: 1.2rem;
-  -webkit-text-decoration: uppercase;
-          text-decoration: uppercase;
-}
-
-.nav-toggle:checked ~ nav {
-  display: block;
-}
-
-#nav-toggle-label {
-  position: absolute;
-  top: 0;
-  left: 24px;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .task-input {
@@ -170,8 +69,8 @@ nav a {
 
 .task-input > input,
 .newtask-btn {
-  width: 80%;
-  height: 32px;
+  width: 15rem;
+  height: 28px;
 }
 
 .todoList {
@@ -190,8 +89,6 @@ nav a {
   list-style-type: none;
   color: white;
   width: 100%;
-  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .todo-card {
@@ -210,8 +107,18 @@ nav a {
           align-items: center;
   width: 100vw;
   height: 128px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#b87128), color-stop(88%, #d73788));
-  background: linear-gradient(to bottom, #b87128 0%, #d73788 88%);
+  -webkit-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.14);
+          box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.14);
+}
+
+.icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 8rem;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
 .todo-card > p {
@@ -243,7 +150,7 @@ nav a {
   word-wrap: normal;
   white-space: nowrap;
   direction: ltr;
-  color: white;
+  color: black;
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
@@ -253,5 +160,25 @@ nav a {
   /* Support for IE. */
   -webkit-font-feature-settings: "liga";
           font-feature-settings: "liga";
+}
+
+.details__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 /*# sourceMappingURL=App.css.map */
