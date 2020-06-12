@@ -3,12 +3,15 @@ import "./App.css";
 import "./dashboard.css";
 import "./details.css";
 import "./header.css";
+import "./register.css";
 import shortid from "shortid";
 import Header from "./components/Header";
 import Details from "./components/Details";
 import Todolist from "./components/Todolist";
 import { Route, Switch, withRouter } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 function bgRandomColor() {
   const randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
@@ -97,6 +100,12 @@ class App extends React.Component {
       <div className="app">
         <Header numTodos={this.state.todoList.length} />
         <Switch>
+          <Route exact path="/Register">
+            <Register />
+          </Route>
+          <Route exact path={["/", "/Login"]}>
+            <Login />
+          </Route>
           <Route path="/Details/:itemId">
             <Details
               todoList={this.state.todoList}
