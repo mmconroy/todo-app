@@ -25,16 +25,19 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className="dashboard__wrapper" style={flexCenter}>
+      <div className="dashboard-body">
         <main className="container__main">
-          <h1 className="dashboard-title">Welcome to todo.ly</h1>
-          <h1 className="dashboard-time">
-            It's {this.state.date.toDateString()}
-          </h1>
-          <div className="dashboard__links__container">
-            <Link to="/todolist">
-              <p className="dashboard-link">Todolist</p>
-            </Link>
+          <div className="dashboard__wrapper">
+            <h1 className="dashboard-title">Welcome to todo.ly</h1>
+            <h1 className="dashboard-time">
+              It's {this.state.date.toDateString()}
+            </h1>
+            <h2>The time is {this.state.date.toLocaleTimeString()}</h2>
+            <div className="dashboard__links__container">
+              <Link to="/todolist">
+                <p className="dashboard-link">Let's get at it!</p>
+              </Link>
+            </div>
           </div>
         </main>
       </div>

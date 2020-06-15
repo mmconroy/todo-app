@@ -1,14 +1,15 @@
-import React from "react";
 import "./App.css";
 import "./dashboard.css";
 import "./details.css";
 import "./header.css";
 import "./register.css";
+import "./login.css";
+import React from "react";
+import { Route, Switch, withRouter } from "react-router-dom";
 import shortid from "shortid";
 import Header from "./components/Header";
 import Details from "./components/Details";
 import Todolist from "./components/Todolist";
-import { Route, Switch, withRouter } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -98,14 +99,16 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Header numTodos={this.state.todoList.length} />
+        <Header />
         <Switch>
           <Route exact path="/Register">
-            <Register />
+            <Register history={this.props.history} />
           </Route>
-          <Route exact path={["/", "/Login"]}>
-            <Login />
+          <Route exact path="/Login">
+            <Login history={this.props.history} />
           </Route>
+        </Switch>
+        <Switch>
           <Route path="/Details/:itemId">
             <Details
               todoList={this.state.todoList}
@@ -138,8 +141,8 @@ class App extends React.Component {
               </ul>
             </div>
           </Route>
-          <Route path="/">
-            <Dashboard />
+          <Route path="/Dashboard">
+            <Dashboard numTodos={this.state.todoList.length} />
           </Route>
         </Switch>
       </div>

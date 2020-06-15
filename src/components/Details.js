@@ -38,7 +38,6 @@ class Details extends React.Component {
 
   getTaskFromList() {
     const itemId = this.props.match.params.itemId;
-    console.log(itemId);
     return (
       this.props.todoList.find((item) => item.id === itemId) || {
         description: "",

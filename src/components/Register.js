@@ -80,8 +80,9 @@ class Register extends Component {
   render() {
     return (
       <div className="wrapper">
+        <p className="title">Create an Account</p>
         {this.state.message && <p>{this.state.message}</p>}
-        <form onSubmit={this.handleSubmit} className="flex-col">
+        <form onSubmit={this.handleSubmit}>
           {this.state.errors.email && (
             <p class="error-message">{this.state.errors.email}</p>
           )}
@@ -123,10 +124,12 @@ class Register extends Component {
 
           <button onClick={this.handleSubmit}>Register</button>
         </form>
-        <p>Already Registered?</p>
-        <Link className="taskGoBackLink" to="/Login">
-          Login
-        </Link>
+        <div className="reg-button">
+          <p>Already Registered?</p>
+          <Link className="taskGoBackLink" to="/Login">
+            Login
+          </Link>
+        </div>
       </div>
     );
   }

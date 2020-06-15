@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 
 const validUserInfo = {
   email: "test@kenzie.academy",
@@ -26,16 +27,21 @@ class Login extends React.Component {
   };
 
   onSubmit = (event) => {
-    event.preventDeafault();
-    if (this.isValidForm) {
+    event.preventDefault();
+    if (
+      this.state.email === "test@kenzie.academy" &&
+      this.state.password === "test123"
+    ) {
       this.props.history.push("/Dashboard");
     } else {
-      this.setState({ error: "Please enter a valid username and/or password" });
+      this.setState({ error: "Incorrect username and/or password." });
     }
   };
+
   render() {
     return (
-      <>
+      <div className="login-wrapper">
+        <p className="login-title">Login</p>
         {this.state.error && <p className="error">{this.state.error}</p>}
         <form className="flex-col" onSubmit={this.onSubmit}>
           <input
@@ -54,9 +60,15 @@ class Login extends React.Component {
           />
           <button>Submit</button>
         </form>
-      </>
+        <div className="reg-button">
+          <p>Not Registered?</p>
+          <Link className="taskGoBackLink" to="/Register">
+            Register for an account
+          </Link>
+        </div>
+      </div>
     );
   }
 }
 
-export default Login;
+export default withRouter(Login);

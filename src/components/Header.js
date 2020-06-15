@@ -21,7 +21,11 @@ function Header(props) {
           ></link>
         </div>
 
-        <img className="profile-img" src={user.avatarURL}></img>
+        <img
+          className="profile-img"
+          alt="profile pic"
+          src={user.avatarURL}
+        ></img>
       </section>
       <h1 className="nav-title">Todo.ly</h1>
       <input type="checkbox" id="nav-toggle" class="nav-toggle" />
@@ -30,6 +34,7 @@ function Header(props) {
       </label>
       <nav>
         <ul
+          className="menu-list"
           style={{
             marginBottom: "4px",
             fontWeight: "300",
@@ -47,27 +52,26 @@ function Header(props) {
                 color: "black",
                 fontSize: "0.5rem",
                 fontFamily: "SF Pro Display",
-                fontSize: "16px",
                 lineHeight: "1.3",
                 paddingBottom: "1rem",
               }}
             >
               {user.name}
             </p>
-            <img className="profile-img" src={user.avatarURL}></img>
+            <img
+              className="profile-img-lg"
+              alt="profile pic"
+              src={user.avatarURL}
+            ></img>
           </li>
           <li>
-            <Link to="/components/Dashboard">Dashboard</Link>
+            <Link to="/Dashboard">Dashboard</Link>
           </li>
           <li>
-            <a class="Link" href="#">
-              <span class="Link-title">Tasks</span>
-            </a>
+            <Link to="/Todolist">Tasks</Link>
           </li>
           <li>
-            <a class="Link" href="#">
-              <span class="Link-title">Account</span>
-            </a>
+            <Link to="/Login">Sign Out</Link>
           </li>
           <li>
             <a class="Link" href="#">
