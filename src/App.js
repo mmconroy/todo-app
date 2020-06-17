@@ -141,7 +141,7 @@ class App extends React.Component {
               </ul>
             </div>
           </Route>
-          <Route path="/Dashboard">
+          <Route path={"/Dashboard"}>
             <Dashboard numTodos={this.state.todoList.length} />
           </Route>
         </Switch>
