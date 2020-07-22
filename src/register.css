@@ -1,0 +1,32 @@
+.wrapper {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 5rem;
+}
+
+.title {
+  color: black;
+  padding: 1rem;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 2rem;
+}
+
+.reg-button > p {
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 1rem;
+  margin-top: 16px;
+  padding: 8px;
+}
+
+.taskGoBackLink {
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 1rem;
+  color: blue;
+}

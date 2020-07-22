@@ -1,0 +1,149 @@
+header {
+  display: flex;
+  width: 100%;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 99;
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.1rem;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.14);
+}
+
+.nav-title {
+  color: black;
+  font-weight: 100;
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+nav {
+  width: 256px;
+  height: 640px;
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12),
+    0px 2px 4px rgba(0, 0, 0, 0.14);
+  display: none;
+  padding-top: 1.5rem;
+  margin: 0;
+}
+
+.nav:hover {
+  cursor: pointer;
+}
+
+nav li {
+  font-family: "SF Pro Display";
+  margin-bottom: 3rem;
+}
+
+nav a {
+  color: black;
+  text-decoration: none;
+  font-size: 1.2rem;
+  text-decoration: uppercase;
+}
+
+.nav-toggle:checked ~ nav {
+  display: block;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  height: 2px;
+  width: 1.75em;
+  background: black;
+  border-radius: 2px;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 9px;
+}
+
+.nav-toggle-label span::after {
+  top: 9px;
+}
+
+@media (min-width: 599px) {
+  .nav-toggle-label {
+    display: none;
+  }
+
+  nav {
+    color: darkgrey;
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    height: 56px;
+    border: none;
+    display: inline-block;
+  }
+
+  header > h1 {
+    color: #6d6d6d;
+  }
+
+  header {
+    height: 0px;
+  }
+
+  .menu-list {
+    display: flex;
+    color: darkgrey;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 6rem;
+  }
+
+  li > a {
+    color: black;
+  }
+
+  li > a:hover {
+    color: white;
+    background-color: black;
+  }
+
+  .profile-img-lg {
+    position: fixed;
+    top: 0;
+  }
+
+  .profile-img {
+    display: none;
+  }
+}
